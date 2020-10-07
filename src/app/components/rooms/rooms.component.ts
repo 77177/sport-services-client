@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TestService} from '../../service/test/test.service';
+import {TestService} from '../../test.service';
 
 @Component({
   selector: 'app-rooms',
