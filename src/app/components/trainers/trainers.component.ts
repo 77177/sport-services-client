@@ -8,14 +8,12 @@ import {TestService} from '../../test.service';
 })
 export class TrainersComponent implements OnInit {
 
-  constructor(private testService: TestService) {
+  public testObject: string;
 
-  }
+  constructor(private testService: TestService) { }
 
   ngOnInit(): void {
-  }
-
-  test(): string {
-    return this.testService.test();
+    this.testService.test()
+      .subscribe(value => this.testObject = value.test);
   }
 }

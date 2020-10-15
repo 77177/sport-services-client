@@ -8,13 +8,12 @@ import {TestService} from '../../test.service';
 })
 export class ProfileComponent implements OnInit {
 
+  public testObject: string;
+
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
+    this.testService.test()
+      .subscribe(value => this.testObject = value.test);
   }
-
-  test(): string {
-    return this.testService.test();
-  }
-
 }
