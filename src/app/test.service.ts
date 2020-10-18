@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Test} from './components/objects/test';
 import {Room} from './components/objects/room';
 import {Trainer} from './components/objects/trainer';
+import {Credentials} from './components/objects/creds';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class TestService {
 
   getProfile(): Observable<string> {
     return this.httpClient.get<string>(this.url + '/v1/api/profile');
+  }
+
+  login(body: string): void {
+    this.httpClient.post(this.url + '/login', body)
+      .subscribe(value => console.log(value));
   }
 }
