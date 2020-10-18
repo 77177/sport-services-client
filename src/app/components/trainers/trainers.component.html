@@ -1,2 +1,10 @@
 <p>trainers works!</p>
-<p>{{testObject}}</p>
+{{sign}}
+<table>
+  <tr><td>Name</td><td>Lastname</td><td>email</td></tr>
+  <tr *ngFor="let trainer of trainers">
+    <td>{{trainer.firstName}}</td>
+    <td>{{trainer.lastName}}</td>
+    <td>{{trainer.email}}</td>
+  </tr>
+</table>

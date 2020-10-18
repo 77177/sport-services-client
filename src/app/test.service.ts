@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from './components/objects/test';
 import {Room} from './components/objects/room';
+import {Trainer} from './components/objects/trainer';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class TestService {
 
   getRooms(): Observable<Room[]> {
     return this.httpClient.get<Room[]>(this.url + '/v1/api/room/all');
+  }
+
+  getTrainers(): Observable<Trainer[]> {
+    return this.httpClient.get<Trainer[]>(this.url + '/v1/api/trainer/all');
   }
 }

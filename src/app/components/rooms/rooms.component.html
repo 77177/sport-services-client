@@ -1,9 +1,10 @@
 <p>rooms works!</p>
-{{testObject}}
-<table class="table-bordered">
-<tr *ngFor="let room of rooms">
-  <td>{{room.id}}</td>
-  <td>{{room.area}}</td>
-</tr>
+{{sign}}
+<table>
+  <tr><td>id</td><td>area</td></tr>
+  <tr *ngFor="let room of rooms">
+    <td>{{room.id}}</td>
+    <td>{{room.area}}</td>
+  </tr>
 </table>
 
