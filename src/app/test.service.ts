@@ -26,4 +26,8 @@ export class TestService {
   getTrainers(): Observable<Trainer[]> {
     return this.httpClient.get<Trainer[]>(this.url + '/v1/api/trainer/all');
   }
+
+  getProfile(): Observable<string> {
+    return this.httpClient.get<string>(this.url + '/v1/api/profile');
+  }
 }

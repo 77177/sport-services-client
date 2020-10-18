@@ -9,11 +9,16 @@ import {TestService} from '../../test.service';
 export class ProfileComponent implements OnInit {
 
   public testObject: string;
+  public username: string;
+  public sign = 'PROFILE';
 
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
     this.testService.test()
       .subscribe(value => this.testObject = value.test);
+    this.testService.getProfile()
+      .subscribe(value => this.username = value);
+
   }
 }
