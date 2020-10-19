@@ -11,7 +11,7 @@ import {Credentials} from './components/objects/creds';
 })
 export class TestService {
 
-  private url = 'http://localhost:8080';
+  private url = 'http://localhost:4200';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,8 +32,9 @@ export class TestService {
     return this.httpClient.get<string>(this.url + '/v1/api/profile');
   }
 
-  login(body: string): void {
-    this.httpClient.post(this.url + '/login', body)
-      .subscribe(value => console.log(value));
+  login(username: string, password: string): Observable<any> {
+    const creds = {username, password};
+    return this.httpClient.post<any>(this.url + '/login?username=' + username
+     + '&password=' + password, creds);
   }
 }
