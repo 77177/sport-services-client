@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { TrainersComponent } from './components/trainers/trainers.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -17,8 +16,7 @@ import {FormsModule} from '@angular/forms';
     MainMenuComponent,
     RoomsComponent,
     TrainersComponent,
-    ProfileComponent,
-    LoginComponent
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,

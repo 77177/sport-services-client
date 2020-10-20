@@ -1,4 +1,21 @@
 <p>profile works!</p>
+
 <p>{{sign}}</p>
-<p>{{userinfo.username}}</p>
+<div *ngIf="isValidUsername()">
+  <p>{{username}}</p>
+</div>
+
+<div *ngIf="isValidUsername()" (click)="logout()">
+  <p>Logout</p>
+</div>
+
+<form *ngIf="!isValidUsername()" role="form" (submit)="login()">
+  <div class="form-group">
+    <input type="text" class="form-control" name="username" [(ngModel)]="creds.username"/>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" name="password" [(ngModel)]="creds.password"/>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 

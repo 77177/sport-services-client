@@ -10,17 +10,31 @@ import {Credentials} from '../objects/creds';
 export class ProfileComponent implements OnInit {
 
   public testObject: string;
-  public userinfo = { username: ''};
+  public username = '';
   public sign = 'PROFILE';
+  public creds = { username: '', password: ''};
 
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
     this.testService.test()
       .subscribe(value => this.testObject = value.test);
-    this.testService.login('TRAINER', 'TEST').subscribe(value => this.userinfo.username = value.username );
-    this.testService.getProfile()
-      .subscribe(value => this.userinfo.username = value);
+  }
 
+
+  login(): void {
+    this.testService.login(this.creds.username, this.creds.password)
+      .subscribe(value => this.username = value.username);
+  }
+
+  logout(): void {
+    console.log('TEST');
+    this.testService.logout()
+      .subscribe(value => console.log(value));
+    this.username = '';
+  }
+
+  isValidUsername(): boolean {
+    return this.username !== '';
   }
 }
