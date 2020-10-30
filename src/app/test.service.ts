@@ -26,10 +26,6 @@ export class TestService {
     return this.httpClient.get<User[]>(this.url + '/v1/api/trainer/all');
   }
 
-  getProfile(): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/profile');
-  }
-
   login(username: string, password: string): Observable<any> {
     const creds = {username, password};
     return this.httpClient.post<any>(this.url + '/login?username=' + username
@@ -37,7 +33,6 @@ export class TestService {
   }
 
   logout(): Observable<any> {
-    console.log('post');
     return this.httpClient.post(this.url + '/logout', {});
   }
 }

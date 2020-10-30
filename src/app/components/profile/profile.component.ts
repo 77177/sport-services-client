@@ -16,8 +16,6 @@ export class ProfileComponent implements OnInit {
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
-    this.testService.test()
-      .subscribe(value => this.testObject = value.test);
   }
 
   login(): void {
@@ -27,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
   logout(): void {
     this.testService.logout()
-      .subscribe(value => console.log(value));
+      .subscribe(value => value);
     this.username = '';
   }
 
