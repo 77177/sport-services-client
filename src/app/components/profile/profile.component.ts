@@ -9,7 +9,6 @@ import {TestService} from '../../test.service';
 export class ProfileComponent implements OnInit {
 
   public testObject: string;
-  public username = '';
   public sign = 'PROFILE';
   public creds = { username: '', password: ''};
 
@@ -19,17 +18,14 @@ export class ProfileComponent implements OnInit {
   }
 
   login(): void {
-    this.testService.login(this.creds.username, this.creds.password)
-      .subscribe(value => this.username = value.username);
+    this.testService.login(this.creds.username, this.creds.password);
   }
 
   logout(): void {
-    this.testService.logout()
-      .subscribe(value => value);
-    this.username = '';
+    this.testService.logout();
   }
 
   isValidUsername(): boolean {
-    return this.username !== '';
+    return this.testService.isLoggedIn();
   }
 }

@@ -10,6 +10,7 @@ import {User} from './components/objects/user';
 })
 export class TestService {
 
+  private username = '';
   private url = 'http://localhost:4200';
 
   constructor(private httpClient: HttpClient) { }
@@ -26,13 +27,34 @@ export class TestService {
     return this.httpClient.get<User[]>(this.url + '/v1/api/trainer/all');
   }
 
-  login(username: string, password: string): Observable<any> {
-    const creds = {username, password};
-    return this.httpClient.post<any>(this.url + '/login?username=' + username
-     + '&password=' + password, creds);
+  getTrainingRequestsForLearner(learnerId: number): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/train/learner/' + learnerId);
   }
 
-  logout(): Observable<any> {
-    return this.httpClient.post(this.url + '/logout', {});
+  getRoomRequestsForTrainer(trainerId: number): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/room/trainer/' + trainerId);
+  }
+
+  getAllTrainerRequests(): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/train/all');
+  }
+
+  getAllRoomRequests(): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/room/all');
+  }
+
+  login(username: string, password: string): void {
+    const creds = {username, password};
+    this.httpClient.post<any>(this.url + '/login?username=' + username + '&password=' + password, creds)
+      .subscribe(value => this.username = value.username);
+  }
+
+  logout(): void {
+    this.httpClient.post<any>(this.url + '/logout', {})
+      .subscribe(value => this.username = value.test);
+  }
+
+  isLoggedIn(): boolean {
+    return this.username !== '';
   }
 }
