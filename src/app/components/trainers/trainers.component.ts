@@ -10,8 +10,8 @@ import {Trainer} from '../objects/trainer';
 export class TrainersComponent implements OnInit {
 
   public testObject: string;
-  public trainers: Trainer[];
   public sign = 'TRAINERS';
+  public trainers: Trainer[];
 
   constructor(private testService: TestService) { }
 

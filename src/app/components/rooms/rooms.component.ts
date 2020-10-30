@@ -10,7 +10,7 @@ import {Room} from '../objects/room';
 export class RoomsComponent implements OnInit {
 
   public testObject: string;
-  public sign: string;
+  public sign = 'ROOMS';
   public rooms: Room[];
 
   constructor(private testService: TestService) { }
@@ -20,9 +20,6 @@ export class RoomsComponent implements OnInit {
       .subscribe(value => this.testObject = value.test);
     this.testService.getRooms()
       .subscribe(value => this.rooms = value);
-
-    this.sign = 'ROOMS';
-
   }
 
 }
