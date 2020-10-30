@@ -1,12 +1,20 @@
 <p>profile works!</p>
 
 <p>{{sign}}</p>
-<div *ngIf="isValidUsername()">
-  <p>{{getUser().username}}</p>
-</div>
 
 <div *ngIf="isValidUsername()" (click)="logout()">
-  <p>Logout</p>
+  <div *ngIf="isTrainer()">
+    TRAINER
+  </div>
+  <div *ngIf="isLearner()">
+    LEARNER
+  </div>
+  <div *ngIf="isAdmin()">
+    ADMIN
+  </div>
+  <div *ngIf="isSecurity()">
+    SECURITY
+  </div>
 </div>
 
 <div *ngIf="!isValidUsername()">

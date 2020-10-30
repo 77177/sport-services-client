@@ -32,4 +32,20 @@ export class ProfileComponent implements OnInit {
   getUser(): any {
     return this.testService.getUser();
   }
+
+  isTrainer(): boolean {
+    return this.getUser().authority === 'ROLE_TRAINER';
+  }
+
+  isLearner(): boolean {
+    return this.getUser().authority === 'ROLE_ADMIN';
+  }
+
+  isAdmin(): boolean {
+    return this.getUser().authority === 'ROLE_USER';
+  }
+
+  isSecurity(): boolean {
+    return this.getUser().authority === 'ROLE_SECURITY';
+  }
 }
