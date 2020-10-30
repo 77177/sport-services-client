@@ -1,0 +1,34 @@
+<form name='f' (submit)="register()">
+  <table>
+    <tr>
+      <td>User:</td>
+      <td><input type='text' name='username' value='' [(ngModel)]="userToRegister.username"/></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type='password' name='password' value='' [(ngModel)]="userToRegister.password"/></td>
+    </tr>
+    <tr>
+      <td>email:</td>
+      <td><input type='text' name='email' value='' [(ngModel)]="userToRegister.email"/></td>
+    </tr>
+    <tr>
+      <td>authority:</td>
+      <td><select name='authority' [(ngModel)]="userToRegister.authority">
+        <option value="ROLE_USER">USER</option>
+        <option value="ROLE_TRAINER">TRAINER</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>fname:</td>
+      <td><input type='text' name='firstName' value='' [(ngModel)]="userToRegister.firstName"/></td>
+    </tr>
+    <tr>
+      <td>lname:</td>
+      <td><input type='text' name='lastName' value='' [(ngModel)]="userToRegister.lastName"/></td>
+    </tr>
+    <tr>
+      <td><input name="submit" type="submit" value="Submit" /></td>
+    </tr>
+  </table>
+</form>

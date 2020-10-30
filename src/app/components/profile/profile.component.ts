@@ -28,4 +28,8 @@ export class ProfileComponent implements OnInit {
   isValidUsername(): boolean {
     return this.testService.isLoggedIn();
   }
+
+  getUser(): any {
+    return this.testService.getUser();
+  }
 }

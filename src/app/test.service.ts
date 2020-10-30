@@ -10,7 +10,15 @@ import {User} from './components/objects/user';
 })
 export class TestService {
 
-  private username = '';
+  user = {
+    username: '',
+    firstName: '',
+    password: '',
+    lastName: '',
+    email: '',
+    authority: '',
+    enabled: 'true'
+  };
   private url = 'http://localhost:4200';
 
   constructor(private httpClient: HttpClient) { }
@@ -46,15 +54,23 @@ export class TestService {
   login(username: string, password: string): void {
     const creds = {username, password};
     this.httpClient.post<any>(this.url + '/login?username=' + username + '&password=' + password, creds)
-      .subscribe(value => this.username = value.username);
+      .subscribe(value => this.user = value);
   }
 
   logout(): void {
     this.httpClient.post<any>(this.url + '/logout', {})
-      .subscribe(value => this.username = value.test);
+      .subscribe(value => this.user.username = value.test);
   }
 
   isLoggedIn(): boolean {
-    return this.username !== '';
+    return this.user.username !== '';
+  }
+
+  register(userToRegister): void {
+    this.httpClient.post<any>(this.url + '/v1/api/user/', userToRegister).subscribe(value => console.log(value));
+  }
+
+  getUser(): any {
+    return this.user;
   }
 }
