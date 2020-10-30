@@ -16,8 +16,6 @@ export class RoomsComponent implements OnInit {
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
-    this.testService.test()
-      .subscribe(value => this.testObject = value.test);
     this.testService.getRooms()
       .subscribe(value => this.rooms = value);
   }

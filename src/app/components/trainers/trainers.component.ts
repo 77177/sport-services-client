@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../test.service';
-import {Trainer} from '../objects/trainer';
+import {User} from '../objects/user';
 
 @Component({
   selector: 'app-trainers',
@@ -11,13 +11,11 @@ export class TrainersComponent implements OnInit {
 
   public testObject: string;
   public sign = 'TRAINERS';
-  public trainers: Trainer[];
+  public trainers: User[];
 
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
-    this.testService.test()
-      .subscribe(value => this.testObject = value.test);
     this.testService.getTrainers()
       .subscribe(value => this.trainers = value);
   }

@@ -1,4 +1,4 @@
-export interface Trainer {
+export interface User {
   id: number;
   username: string;
   firstName: string;
@@ -7,5 +7,4 @@ export interface Trainer {
   email: string;
   authority: string;
   enabled: boolean;
-  area: number;
 }

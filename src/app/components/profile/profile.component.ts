@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../test.service';
-import {Credentials} from '../objects/creds';
 
 @Component({
   selector: 'app-profile',
@@ -21,14 +20,12 @@ export class ProfileComponent implements OnInit {
       .subscribe(value => this.testObject = value.test);
   }
 
-
   login(): void {
     this.testService.login(this.creds.username, this.creds.password)
       .subscribe(value => this.username = value.username);
   }
 
   logout(): void {
-    console.log('TEST');
     this.testService.logout()
       .subscribe(value => console.log(value));
     this.username = '';

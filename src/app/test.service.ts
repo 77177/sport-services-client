@@ -3,8 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from './components/objects/test';
 import {Room} from './components/objects/room';
-import {Trainer} from './components/objects/trainer';
-import {Credentials} from './components/objects/creds';
+import {User} from './components/objects/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ export class TestService {
 
   constructor(private httpClient: HttpClient) { }
 
-
   test(): Observable<Test>{
     return this.httpClient.get<Test>(this.url + '/v1/api/test');
   }
@@ -24,8 +22,8 @@ export class TestService {
     return this.httpClient.get<Room[]>(this.url + '/v1/api/room/all');
   }
 
-  getTrainers(): Observable<Trainer[]> {
-    return this.httpClient.get<Trainer[]>(this.url + '/v1/api/trainer/all');
+  getTrainers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url + '/v1/api/trainer/all');
   }
 
   getProfile(): Observable<any> {
