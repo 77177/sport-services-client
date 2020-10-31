@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Test} from './components/objects/test';
 import {Room} from './components/objects/room';
 import {User} from './components/objects/user';
+import {TrainerRequest} from './components/objects/trainerRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -39,12 +40,16 @@ export class TestService {
     return this.httpClient.get<any>(this.url + '/v1/api/request/train/learner/' + learnerId);
   }
 
+  getTrainingRequestsForTrainer(trainerId: number): Observable<TrainerRequest[]> {
+    return this.httpClient.get<TrainerRequest[]>(this.url + '/v1/api/request/train/trainer/' + trainerId);
+  }
+
   getRoomRequestsForTrainer(trainerId: number): Observable<any> {
     return this.httpClient.get<any>(this.url + '/v1/api/request/room/trainer/' + trainerId);
   }
 
-  getAllTrainerRequests(): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/request/train/all');
+  getAllTrainerRequests(): Observable<TrainerRequest[]> {
+    return this.httpClient.get<TrainerRequest[]>(this.url + '/v1/api/request/train/all');
   }
 
   getAllRoomRequests(): Observable<any> {

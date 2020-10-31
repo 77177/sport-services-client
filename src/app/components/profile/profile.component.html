@@ -3,8 +3,36 @@
 <p>{{sign}}</p>
 
 <div *ngIf="isValidUsername()" (click)="logout()">
+  <table>
+    <tr>
+      <td>First Name</td>
+      <td>{{getUser().firstName}}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>{{getUser().lastName}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{getUser().email}}</td>
+    </tr>
+    <tr>
+      <td>Role</td>
+      <td>{{getUser().authority}}</td>
+    </tr>
+  </table>
   <div *ngIf="isTrainer()">
-    TRAINER
+    <table>
+      <tr *ngFor="let trainerRequest of getTrainerRequestsForTrainer()">
+        <td>{{trainerRequest.id}}</td>
+        <td>{{trainerRequest.requester.toString()}}</td>
+        <td>{{trainerRequest.trainer.toString()}}</td>
+        <td>{{trainerRequest.startTime}}</td>
+        <td>{{trainerRequest.endTime}}</td>
+        <td>{{trainerRequest.approvedTrainer}}</td>
+        <td>{{trainerRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
   </div>
   <div *ngIf="isLearner()">
     LEARNER

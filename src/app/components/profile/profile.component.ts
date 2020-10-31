@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../test.service';
+import {TrainerRequest} from '../objects/trainerRequest';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,7 @@ export class ProfileComponent implements OnInit {
   public testObject: string;
   public sign = 'PROFILE';
   public creds = { username: '', password: ''};
+  public trainerRequestsForTrainer: TrainerRequest[];
 
   constructor(private testService: TestService) { }
 
@@ -34,6 +36,8 @@ export class ProfileComponent implements OnInit {
   }
 
   isTrainer(): boolean {
+    this.testService.getTrainingRequestsForTrainer(this.getUser().id)
+      .subscribe(value => this.trainerRequestsForTrainer = value);
     return this.getUser().authority === 'ROLE_TRAINER';
   }
 
@@ -47,5 +51,9 @@ export class ProfileComponent implements OnInit {
 
   isSecurity(): boolean {
     return this.getUser().authority === 'ROLE_SECURITY';
+  }
+
+  getTrainerRequestsForTrainer(): TrainerRequest[] {
+    return this.trainerRequestsForTrainer;
   }
 }
