@@ -2,7 +2,7 @@
 
 <p>{{sign}}</p>
 
-<div *ngIf="isValidUsername()" (click)="logout()">
+<div *ngIf="isValidUsername()">
   <table>
     <tr>
       <td>First Name</td>
@@ -22,11 +22,40 @@
     </tr>
   </table>
   <div *ngIf="isTrainer()">
+    TRAINER REQUESTS
     <table>
       <tr *ngFor="let trainerRequest of getTrainerRequestsForTrainer()">
         <td>{{trainerRequest.id}}</td>
-        <td>{{trainerRequest.requester.toString()}}</td>
-        <td>{{trainerRequest.trainer.toString()}}</td>
+        <td>{{trainerRequest.requester.username}}</td>
+        <td>{{trainerRequest.trainer.username}}</td>
+        <td>{{trainerRequest.startTime}}</td>
+        <td>{{trainerRequest.endTime}}</td>
+        <td>{{trainerRequest.approvedTrainer}}</td>
+        <td>{{trainerRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
+
+    ROOM REQUESTS
+    <table>
+      <tr *ngFor="let roomRequest of getRoomRequestsForTrainer()">
+        <td>{{roomRequest.id}}</td>
+        <td>{{roomRequest.requester.username}}</td>
+        <td>{{roomRequest.trainer.username}}</td>
+        <td>{{roomRequest.startTime}}</td>
+        <td>{{roomRequest.endTime}}</td>
+        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="isLearner()">
+    TRAINER REQUESTS
+    <table>
+      <tr *ngFor="let trainerRequest of getTrainerRequestsForLearner()">
+        <td>{{trainerRequest.id}}</td>
+        <td>{{trainerRequest.requester.username}}</td>
+        <td>{{trainerRequest.trainer.username}}</td>
         <td>{{trainerRequest.startTime}}</td>
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
@@ -34,14 +63,14 @@
       </tr>
     </table>
   </div>
-  <div *ngIf="isLearner()">
-    LEARNER
-  </div>
   <div *ngIf="isAdmin()">
     ADMIN
   </div>
   <div *ngIf="isSecurity()">
     SECURITY
+  </div>
+  <div (click)="logout()">
+    LOGOUT
   </div>
 </div>
 

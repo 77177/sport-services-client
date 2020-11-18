@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from '../../test.service';
+import { RoomRequest } from '../objects/roomRequest';
 import {TrainerRequest} from '../objects/trainerRequest';
 
 @Component({
@@ -13,10 +14,14 @@ export class ProfileComponent implements OnInit {
   public sign = 'PROFILE';
   public creds = { username: '', password: ''};
   public trainerRequestsForTrainer: TrainerRequest[];
+  public roomRequestForTrainer: RoomRequest[];
+  public trainerRequestsForLearner: TrainerRequest[];
 
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
+    this.testService.getTrainingRequestsForLearner(this.getUser().id)
+      .subscribe(value => this.trainerRequestsForTrainer = value);
   }
 
   login(): void {
@@ -38,6 +43,8 @@ export class ProfileComponent implements OnInit {
   isTrainer(): boolean {
     this.testService.getTrainingRequestsForTrainer(this.getUser().id)
       .subscribe(value => this.trainerRequestsForTrainer = value);
+    this.testService.getRoomRequestsForTrainer(this.getUser().id)
+      .subscribe(value => this.roomRequestForTrainer = value);
     return this.getUser().authority === 'ROLE_TRAINER';
   }
 
@@ -46,6 +53,8 @@ export class ProfileComponent implements OnInit {
   }
 
   isLearner(): boolean {
+    this.testService.getTrainingRequestsForLearner(this.getUser().id)
+      .subscribe(value => this.trainerRequestsForLearner = value);
     return this.getUser().authority === 'ROLE_USER';
   }
 
@@ -55,5 +64,13 @@ export class ProfileComponent implements OnInit {
 
   getTrainerRequestsForTrainer(): TrainerRequest[] {
     return this.trainerRequestsForTrainer;
+  }
+
+  getTrainerRequestsForLearner(): TrainerRequest[] {
+    return this.trainerRequestsForLearner;
+  }
+
+  getRoomRequestsForTrainer(): RoomRequest[] {
+    return this.roomRequestForTrainer;
   }
 }
