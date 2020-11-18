@@ -41,11 +41,11 @@ export class ProfileComponent implements OnInit {
     return this.getUser().authority === 'ROLE_TRAINER';
   }
 
-  isLearner(): boolean {
+  isAdmin(): boolean {
     return this.getUser().authority === 'ROLE_ADMIN';
   }
 
-  isAdmin(): boolean {
+  isLearner(): boolean {
     return this.getUser().authority === 'ROLE_USER';
   }
 
