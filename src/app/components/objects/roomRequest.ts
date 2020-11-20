@@ -7,6 +7,6 @@ export interface RoomRequest {
   room: Room;
   startTime: any;
   endTime: any;
-  approvedTrainer: boolean;
+  approvedAdmin: boolean;
   approvedSecurity: boolean;
 }

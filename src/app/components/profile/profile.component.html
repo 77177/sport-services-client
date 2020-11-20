@@ -28,6 +28,15 @@
   <div *ngIf="isTrainer()">
     TRAINER REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Trainer</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Trainer approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let trainerRequest of getTrainerRequestsForTrainer()">
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
@@ -41,13 +50,22 @@
 
     ROOM REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Room</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Admin approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let roomRequest of getRoomRequestsForTrainer()">
         <td>{{roomRequest.id}}</td>
-        <td>{{roomRequest.requester.username}}</td>\
-        <td>{{roomRequest.room.id}}</td>\
+        <td>{{roomRequest.requester.username}}</td>
+        <td>{{roomRequest.room.id}}</td>
         <td>{{roomRequest.startTime}}</td>
         <td>{{roomRequest.endTime}}</td>
-        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
       </tr>
     </table>
@@ -57,6 +75,15 @@
   <div *ngIf="isLearner()">
     TRAINER REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Trainer</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Trainer approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let trainerRequest of getTrainerRequestsForLearner()">
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
@@ -73,6 +100,15 @@
   <div *ngIf="isAdmin()">
     TRAINER REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Trainer</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Trainer approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let trainerRequest of getAllTrainerRequests()">
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
@@ -81,18 +117,28 @@
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
+        <td><a href=""></a></td>
       </tr>
     </table>
 
     ROOM REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Room</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Admin approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let roomRequest of getAllRoomRequests()">
         <td>{{roomRequest.id}}</td>
         <td>{{roomRequest.requester.username}}</td>\
         <td>{{roomRequest.room.id}}</td>\
         <td>{{roomRequest.startTime}}</td>
         <td>{{roomRequest.endTime}}</td>
-        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
       </tr>
     </table>
@@ -101,6 +147,15 @@
   <div *ngIf="isSecurity()">
     TRAINER REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Trainer</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Trainer approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let trainerRequest of getAllTrainerRequests()">
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
@@ -114,13 +169,22 @@
 
     ROOM REQUESTS
     <table>
+      <tr>
+        <td>Id</td>
+        <td>Requester</td>
+        <td>Room</td>
+        <td>Start</td>
+        <td>End</td>
+        <td>Admin approved</td>
+        <td>Security approved</td>
+      </tr>
       <tr *ngFor="let roomRequest of getAllRoomRequests()">
         <td>{{roomRequest.id}}</td>
         <td>{{roomRequest.requester.username}}</td>\
         <td>{{roomRequest.room.id}}</td>\
         <td>{{roomRequest.startTime}}</td>
         <td>{{roomRequest.endTime}}</td>
-        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
       </tr>
     </table>

@@ -1,9 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TestService} from '../../test.service';
 import {RoomRequest} from '../objects/roomRequest';
-import {TrainerRequest} from '../objects/trainerRequest';
-import {waitForAsync} from '@angular/core/testing';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -99,3 +96,6 @@ export class ProfileComponent {
     }
   }
 }
+import {TrainerRequest} from '../objects/trainerRequest';
+
+import {waitForAsync} from '@angular/core/testing';
