@@ -18,8 +18,9 @@ export class TestService {
     lastName: '',
     email: '',
     authority: '',
-    enabled: 'true'
-  };
+    enabled: true
+  } as User;
+
   private url = 'http://localhost:4200';
 
   constructor(private httpClient: HttpClient) { }
@@ -75,7 +76,7 @@ export class TestService {
     this.httpClient.post<any>(this.url + '/v1/api/user/', userToRegister).subscribe(value => console.log(value));
   }
 
-  getUser(): any {
+  getUser(): User {
     return this.user;
   }
 }

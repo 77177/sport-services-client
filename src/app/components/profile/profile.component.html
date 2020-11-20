@@ -2,7 +2,9 @@
 
 <p>{{sign}}</p>
 
-<div *ngIf="isValidUsername()">
+<div *ngIf="isLoggedIn()">
+
+<!--  PROFILE INFO-->
   <table>
     <tr>
       <td>First Name</td>
@@ -21,6 +23,8 @@
       <td>{{getUser().authority}}</td>
     </tr>
   </table>
+
+<!--  TRAINER BLOCK-->
   <div *ngIf="isTrainer()">
     TRAINER REQUESTS
     <table>
@@ -39,8 +43,8 @@
     <table>
       <tr *ngFor="let roomRequest of getRoomRequestsForTrainer()">
         <td>{{roomRequest.id}}</td>
-        <td>{{roomRequest.requester.username}}</td>
-        <td>{{roomRequest.trainer.username}}</td>
+        <td>{{roomRequest.requester.username}}</td>\
+        <td>{{roomRequest.room.id}}</td>\
         <td>{{roomRequest.startTime}}</td>
         <td>{{roomRequest.endTime}}</td>
         <td>{{roomRequest.approvedTrainer}}</td>
@@ -49,6 +53,7 @@
     </table>
   </div>
 
+<!--  LEARNER BLOCK-->
   <div *ngIf="isLearner()">
     TRAINER REQUESTS
     <table>
@@ -63,18 +68,78 @@
       </tr>
     </table>
   </div>
+
+<!--  ADMIN BLOCK-->
   <div *ngIf="isAdmin()">
-    ADMIN
+    TRAINER REQUESTS
+    <table>
+      <tr *ngFor="let trainerRequest of getAllTrainerRequests()">
+        <td>{{trainerRequest.id}}</td>
+        <td>{{trainerRequest.requester.username}}</td>
+        <td>{{trainerRequest.trainer.username}}</td>
+        <td>{{trainerRequest.startTime}}</td>
+        <td>{{trainerRequest.endTime}}</td>
+        <td>{{trainerRequest.approvedTrainer}}</td>
+        <td>{{trainerRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
+
+    ROOM REQUESTS
+    <table>
+      <tr *ngFor="let roomRequest of getAllRoomRequests()">
+        <td>{{roomRequest.id}}</td>
+        <td>{{roomRequest.requester.username}}</td>\
+        <td>{{roomRequest.room.id}}</td>\
+        <td>{{roomRequest.startTime}}</td>
+        <td>{{roomRequest.endTime}}</td>
+        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
   </div>
+<!--  SECURITY BLOCK-->
   <div *ngIf="isSecurity()">
-    SECURITY
+    TRAINER REQUESTS
+    <table>
+      <tr *ngFor="let trainerRequest of getAllTrainerRequests()">
+        <td>{{trainerRequest.id}}</td>
+        <td>{{trainerRequest.requester.username}}</td>
+        <td>{{trainerRequest.trainer.username}}</td>
+        <td>{{trainerRequest.startTime}}</td>
+        <td>{{trainerRequest.endTime}}</td>
+        <td>{{trainerRequest.approvedTrainer}}</td>
+        <td>{{trainerRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
+
+    ROOM REQUESTS
+    <table>
+      <tr *ngFor="let roomRequest of getAllRoomRequests()">
+        <td>{{roomRequest.id}}</td>
+        <td>{{roomRequest.requester.username}}</td>\
+        <td>{{roomRequest.room.id}}</td>\
+        <td>{{roomRequest.startTime}}</td>
+        <td>{{roomRequest.endTime}}</td>
+        <td>{{roomRequest.approvedTrainer}}</td>
+        <td>{{roomRequest.approvedSecurity}}</td>
+      </tr>
+    </table>
   </div>
-  <div (click)="logout()">
-    LOGOUT
+
+<!--  BUTTONS-->
+  <div>
+    <button (click)="logout()">
+      LOGOUT
+    </button>
+  </div>
+  <div>
+    <button (click)="refresh()">
+      REFRESH
+    </button>
   </div>
 </div>
 
-<div *ngIf="!isValidUsername()">
+<div *ngIf="!isLoggedIn()">
   <form role="form" (submit)="login()">
     <table>
       <tr>

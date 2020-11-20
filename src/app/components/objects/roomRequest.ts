@@ -1,9 +1,10 @@
 import {User} from './user';
+import {Room} from './room';
 
 export interface RoomRequest {
   id: number;
   requester: User;
-  trainer: User;
+  room: Room;
   startTime: any;
   endTime: any;
   approvedTrainer: boolean;
