@@ -83,4 +83,8 @@ export class TestService {
   createRoomRequest(roomRequest): void {
     this.httpClient.post<any>(this.url + '/v1/api/request/room/', roomRequest).subscribe(value => console.log(value));
   }
+
+  createTrainerRequest(trainerRequest): void {
+    this.httpClient.post<any>(this.url + '/v1/api/request/train/', trainerRequest).subscribe(value => console.log(value));
+  }
 }
