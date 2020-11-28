@@ -1,10 +1,41 @@
 <p>rooms works!</p>
 {{sign}}
+
+<div *ngIf="!isTrainer()">
 <table>
-  <tr><td>id</td><td>area</td></tr>
+  <tr>
+    <td>id</td>
+    <td>area</td>
+  </tr>
   <tr *ngFor="let room of rooms">
     <td>{{room.id}}</td>
     <td>{{room.area}}</td>
   </tr>
 </table>
+</div>
 
+<div *ngIf="isTrainer()">
+  <form>
+<table>
+  <tr>
+    <td>id</td>
+    <td>area</td>
+    <td>start date</td>
+    <td>end date</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let room of rooms">
+    <td>{{room.id}}</td>
+    <td>{{room.area}}</td>
+    <td><label>
+      <input type='datetime-local' name='start date' [(ngModel)]="roomRequest.start"/>
+    </label></td>
+    <td><label>
+      <input type='datetime-local' name='end date' [(ngModel)]="roomRequest.end">
+    </label></td>
+    <td><input type='submit' value='Add request' (click)="createRoomRequest(room.id, getUser().id)"></td>
+  </tr>
+</table>
+  </form>
+</div>
