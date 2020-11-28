@@ -39,6 +39,7 @@ export class RoomsComponent implements OnInit {
     this.roomRequest.roomId = roomId;
     this.roomRequest.trainerId = trainerId;
     console.log(this.roomRequest);
+    this.testService.createRoomRequest(this.roomRequest);
   }
 
 }

@@ -79,4 +79,8 @@ export class TestService {
   getUser(): User {
     return this.user;
   }
+
+  createRoomRequest(roomRequest): void {
+    this.httpClient.post<any>(this.url + '/v1/api/request/room/', roomRequest).subscribe(value => console.log(value));
+  }
 }
