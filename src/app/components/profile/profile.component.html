@@ -119,7 +119,6 @@
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
-        <td><a href=""></a></td>
       </tr>
     </table>
 
@@ -142,6 +141,9 @@
         <td>{{roomRequest.endTime}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
+        <td><button *ngIf="!roomRequest.approvedAdmin"
+                    (click)="sendRoomRequestApprovalByAdmin(roomRequest.id)">Approve by Admin</button></td>
+
       </tr>
     </table>
   </div>
@@ -191,6 +193,8 @@
         <td>{{roomRequest.endTime}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
+        <td><button *ngIf="!roomRequest.approvedSecurity"
+                    (click)="sendRoomRequestApprovalBySecurity(roomRequest.id)">Approve by security</button></td>
       </tr>
     </table>
   </div>

@@ -99,12 +99,18 @@ export class ProfileComponent {
 
   sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
     this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId);
-    this.refresh();
+  }
+
+  sendRoomRequestApprovalBySecurity(roomRequestId): void {
+    this.testService.sendRoomRequestApprovalBySecurity(roomRequestId);
   }
 
   sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
     this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId);
-    this.refresh();
+  }
+
+  sendRoomRequestApprovalByAdmin(roomRequestId): void {
+    this.testService.sendRoomRequestApprovalByAdmin(roomRequestId);
   }
 }
 

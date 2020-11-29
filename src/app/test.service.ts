@@ -97,4 +97,14 @@ export class TestService {
     this.httpClient.get<any>(this.url + '/v1/api/request/train/trainer/approve/' + trainerRequestId)
       .subscribe(value => console.log(value));
   }
+
+  sendRoomRequestApprovalBySecurity(roomRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/room/security/approve/' + roomRequestId)
+      .subscribe(value => console.log(value));
+  }
+
+  sendRoomRequestApprovalByAdmin(roomRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId)
+      .subscribe(value => console.log(value));
+  }
 }
