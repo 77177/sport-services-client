@@ -41,8 +41,8 @@
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
         <td>{{trainerRequest.trainer.username}}</td>
-        <td>{{trainerRequest.startTime}}</td>
-        <td>{{trainerRequest.endTime}}</td>
+        <td>{{getDate(trainerRequest.startTime).toString()}}</td>
+        <td>{{getDate(trainerRequest.endTime).toString()}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
         <td><button *ngIf="!trainerRequest.approvedTrainer"
@@ -66,8 +66,8 @@
         <td>{{roomRequest.id}}</td>
         <td>{{roomRequest.requester.username}}</td>
         <td>{{roomRequest.room.id}}</td>
-        <td>{{roomRequest.startTime}}</td>
-        <td>{{roomRequest.endTime}}</td>
+        <td>{{getDate(roomRequest.startTime).toString()}}</td>
+        <td>{{getDate(roomRequest.endTime).toString()}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
         <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
@@ -92,8 +92,8 @@
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
         <td>{{trainerRequest.trainer.username}}</td>
-        <td>{{trainerRequest.startTime}}</td>
-        <td>{{trainerRequest.endTime}}</td>
+        <td>{{getDate(trainerRequest.startTime).toString()}}</td>
+        <td>{{getDate(trainerRequest.endTime).toString()}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
       </tr>
@@ -117,8 +117,8 @@
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
         <td>{{trainerRequest.trainer.username}}</td>
-        <td>{{trainerRequest.startTime}}</td>
-        <td>{{trainerRequest.endTime}}</td>
+        <td>{{getDate(trainerRequest.startTime).toString()}}</td>
+        <td>{{getDate(trainerRequest.endTime).toString()}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
         <td><button (click)="deleteTrainerRequest(trainerRequest.id)">delete</button></td>
@@ -140,8 +140,8 @@
         <td>{{roomRequest.id}}</td>
         <td>{{roomRequest.requester.username}}</td>
         <td>{{roomRequest.room.id}}</td>
-        <td>{{roomRequest.startTime}}</td>
-        <td>{{roomRequest.endTime}}</td>
+        <td>{{getDate(roomRequest.startTime).toString()}}</td>
+        <td>{{getDate(roomRequest.endTime).toString()}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
         <td><button *ngIf="!roomRequest.approvedAdmin"
@@ -168,8 +168,8 @@
         <td>{{trainerRequest.id}}</td>
         <td>{{trainerRequest.requester.username}}</td>
         <td>{{trainerRequest.trainer.username}}</td>
-        <td>{{trainerRequest.startTime}}</td>
-        <td>{{trainerRequest.endTime}}</td>
+        <td>{{getDate(trainerRequest.startTime).toString()}}</td>
+        <td>{{getDate(trainerRequest.endTime).toString()}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
         <td><button *ngIf="!trainerRequest.approvedSecurity"
@@ -193,8 +193,8 @@
         <td>{{roomRequest.id}}</td>
         <td>{{roomRequest.requester.username}}</td>
         <td>{{roomRequest.room.id}}</td>
-        <td>{{roomRequest.startTime}}</td>
-        <td>{{roomRequest.endTime}}</td>
+        <td>{{getDate(roomRequest.startTime).toString()}}</td>
+        <td>{{getDate(roomRequest.endTime).toString()}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
         <td><button *ngIf="!roomRequest.approvedSecurity"

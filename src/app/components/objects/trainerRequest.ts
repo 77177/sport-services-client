@@ -4,8 +4,8 @@ export interface TrainerRequest {
   id: number;
   requester: User;
   trainer: User;
-  startTime: any;
-  endTime: any;
+  startTime: Date;
+  endTime: Date;
   approvedTrainer: boolean;
   approvedSecurity: boolean;
 }

@@ -5,8 +5,8 @@ export interface RoomRequest {
   id: number;
   requester: User;
   room: Room;
-  startTime: any;
-  endTime: any;
+  startTime: Date;
+  endTime: Date;
   approvedAdmin: boolean;
   approvedSecurity: boolean;
 }

@@ -120,5 +120,9 @@ export class ProfileComponent {
   deleteTrainerRequest(trainerRequestId): void {
     this.testService.deleteTrainerRequest(trainerRequestId);
   }
+
+  getDate(milliseconds): Date {
+    return new Date(milliseconds);
+  }
 }
 
