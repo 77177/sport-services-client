@@ -112,5 +112,13 @@ export class ProfileComponent {
   sendRoomRequestApprovalByAdmin(roomRequestId): void {
     this.testService.sendRoomRequestApprovalByAdmin(roomRequestId);
   }
+
+  deleteRoomRequest(roomRequestId): void {
+    this.testService.deleteRoomRequest(roomRequestId);
+  }
+
+  deleteTrainerRequest(trainerRequestId): void {
+    this.testService.deleteTrainerRequest(trainerRequestId);
+  }
 }
 

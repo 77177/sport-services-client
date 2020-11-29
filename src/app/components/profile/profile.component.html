@@ -47,6 +47,7 @@
         <td>{{trainerRequest.approvedSecurity}}</td>
         <td><button *ngIf="!trainerRequest.approvedTrainer"
                     (click)="sendTrainerRequestApprovalByTrainer(trainerRequest.id)">Approve by trainer</button></td>
+        <td><button (click)="deleteTrainerRequest(trainerRequest.id)">delete</button></td>
       </tr>
     </table>
 
@@ -69,6 +70,7 @@
         <td>{{roomRequest.endTime}}</td>
         <td>{{roomRequest.approvedAdmin}}</td>
         <td>{{roomRequest.approvedSecurity}}</td>
+        <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
       </tr>
     </table>
   </div>
@@ -119,6 +121,7 @@
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
+        <td><button (click)="deleteTrainerRequest(trainerRequest.id)">delete</button></td>
       </tr>
     </table>
 
@@ -143,7 +146,7 @@
         <td>{{roomRequest.approvedSecurity}}</td>
         <td><button *ngIf="!roomRequest.approvedAdmin"
                     (click)="sendRoomRequestApprovalByAdmin(roomRequest.id)">Approve by Admin</button></td>
-
+        <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
       </tr>
     </table>
   </div>
@@ -171,6 +174,7 @@
         <td>{{trainerRequest.approvedSecurity}}</td>
         <td><button *ngIf="!trainerRequest.approvedSecurity"
                     (click)="sendTrainerRequestApprovalBySecurity(trainerRequest.id)">Approve by security</button></td>
+        <td><button (click)="deleteTrainerRequest(trainerRequest.id)">delete</button></td>
       </tr>
     </table>
 
@@ -195,6 +199,7 @@
         <td>{{roomRequest.approvedSecurity}}</td>
         <td><button *ngIf="!roomRequest.approvedSecurity"
                     (click)="sendRoomRequestApprovalBySecurity(roomRequest.id)">Approve by security</button></td>
+        <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
       </tr>
     </table>
   </div>

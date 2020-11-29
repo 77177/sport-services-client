@@ -107,4 +107,14 @@ export class TestService {
     this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId)
       .subscribe(value => console.log(value));
   }
+
+  deleteRoomRequest(roomRequestId): void {
+    this.httpClient.delete<any>(this.url + '/v1/api/request/room/' + roomRequestId)
+      .subscribe(value => console.log(value));
+  }
+
+  deleteTrainerRequest(trainerRequestId): void {
+    this.httpClient.delete<any>(this.url + '/v1/api/request/trainer/' + trainerRequestId)
+      .subscribe(value => console.log(value));
+  }
 }
