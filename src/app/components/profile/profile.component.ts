@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TestService} from '../../test.service';
 import {RoomRequest} from '../objects/roomRequest';
+import {TrainerRequest} from '../objects/trainerRequest';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -95,7 +96,15 @@ export class ProfileComponent {
         .subscribe(value => this.allTrainerRequests = value);
     }
   }
-}
-import {TrainerRequest} from '../objects/trainerRequest';
 
-import {waitForAsync} from '@angular/core/testing';
+  sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
+    this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId);
+    this.refresh();
+  }
+
+  sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
+    this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId);
+    this.refresh();
+  }
+}
+

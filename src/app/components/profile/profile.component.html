@@ -45,6 +45,8 @@
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
+        <td><button *ngIf="!trainerRequest.approvedTrainer"
+                    (click)="sendTrainerRequestApprovalByTrainer(trainerRequest.id)">Approve by trainer</button></td>
       </tr>
     </table>
 
@@ -143,6 +145,7 @@
       </tr>
     </table>
   </div>
+
 <!--  SECURITY BLOCK-->
   <div *ngIf="isSecurity()">
     TRAINER REQUESTS
@@ -164,6 +167,8 @@
         <td>{{trainerRequest.endTime}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
+        <td><button *ngIf="!trainerRequest.approvedSecurity"
+                    (click)="sendTrainerRequestApprovalBySecurity(trainerRequest.id)">Approve by security</button></td>
       </tr>
     </table>
 
