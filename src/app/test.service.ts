@@ -5,12 +5,18 @@ import {Test} from './components/objects/test';
 import {Room} from './components/objects/room';
 import {User} from './components/objects/user';
 import {TrainerRequest} from './components/objects/trainerRequest';
+import {RoomRequest} from './components/objects/roomRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
 
+  public trainerRequestsForTrainer: TrainerRequest[];
+  public roomRequestForTrainer: RoomRequest[];
+  public trainerRequestsForLearner: TrainerRequest[];
+  public allRoomRequests: RoomRequest[];
+  public allTrainerRequests: TrainerRequest[];
   user = {
     username: '',
     firstName: '',
@@ -27,6 +33,45 @@ export class TestService {
 
   test(): Observable<Test>{
     return this.httpClient.get<Test>(this.url + '/v1/api/test');
+  }
+
+  isTrainer(): boolean {
+    return this.getUser().authority === 'ROLE_TRAINER';
+  }
+
+  isAdmin(): boolean {
+    return this.getUser().authority === 'ROLE_ADMIN';
+  }
+
+  isLearner(): boolean {
+    return this.getUser().authority === 'ROLE_USER';
+  }
+
+  isSecurity(): boolean {
+    return this.getUser().authority === 'ROLE_SECURITY';
+  }
+
+  refresh(): void {
+    const currentUser = this.getUser();
+    if (this.isTrainer()) {
+      this.getTrainingRequestsForTrainer(currentUser.id)
+        .subscribe(value => this.trainerRequestsForTrainer = value);
+      this.getRoomRequestsForTrainer(currentUser.id)
+        .subscribe(value => this.roomRequestForTrainer = value);
+    } else if (this.isLearner()) {
+      this.getTrainingRequestsForLearner(currentUser.id)
+        .subscribe(value => this.trainerRequestsForLearner = value);
+    } else if (this.isAdmin()) {
+      this.getAllRoomRequests()
+        .subscribe(value => this.allRoomRequests = value);
+      this.getAllTrainerRequests()
+        .subscribe(value => this.allTrainerRequests = value);
+    } else if (this.isSecurity()) {
+      this.getAllRoomRequests()
+        .subscribe(value => this.allRoomRequests = value);
+      this.getAllTrainerRequests()
+        .subscribe(value => this.allTrainerRequests = value);
+    }
   }
 
   getRooms(): Observable<Room[]> {
@@ -60,7 +105,10 @@ export class TestService {
   login(username: string, password: string): void {
     const creds = {username, password};
     this.httpClient.post<any>(this.url + '/login?username=' + username + '&password=' + password, creds)
-      .subscribe(value => this.user = value);
+      .subscribe(value => {
+        this.user = value;
+        this.refresh();
+      });
   }
 
   logout(): void {
@@ -88,27 +136,33 @@ export class TestService {
     this.httpClient.post<any>(this.url + '/v1/api/request/train/', trainerRequest).subscribe(value => console.log(value));
   }
 
-  sendTrainerRequestApprovalBySecurity(trainerRequestId): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/request/train/security/approve/' + trainerRequestId);
+  sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/train/security/approve/' + trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 
-  sendTrainerRequestApprovalByTrainer(trainerRequestId): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/request/train/trainer/approve/' + trainerRequestId);
+  sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/train/trainer/approve/' + trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 
-  sendRoomRequestApprovalBySecurity(roomRequestId): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/request/room/security/approve/' + roomRequestId);
+  sendRoomRequestApprovalBySecurity(roomRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/room/security/approve/' + roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
-  sendRoomRequestApprovalByAdmin(roomRequestId): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId);
+  sendRoomRequestApprovalByAdmin(roomRequestId): void {
+    this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
-  deleteRoomRequest(roomRequestId): Observable<any> {
-    return this.httpClient.delete<any>(this.url + '/v1/api/request/room/' + roomRequestId);
+  deleteRoomRequest(roomRequestId): void {
+    this.httpClient.delete<any>(this.url + '/v1/api/request/room/' + roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
-  deleteTrainerRequest(trainerRequestId): Observable<any> {
-    return this.httpClient.delete<any>(this.url + '/v1/api/request/train/' + trainerRequestId);
+  deleteTrainerRequest(trainerRequestId): void {
+    this.httpClient.delete<any>(this.url + '/v1/api/request/train/' + trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 }

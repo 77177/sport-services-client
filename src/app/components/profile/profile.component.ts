@@ -12,11 +12,6 @@ export class ProfileComponent {
   public testObject: string;
   public sign = 'PROFILE';
   public creds = {username: '', password: ''};
-  public trainerRequestsForTrainer: TrainerRequest[];
-  public roomRequestForTrainer: RoomRequest[];
-  public trainerRequestsForLearner: TrainerRequest[];
-  public allRoomRequests: RoomRequest[];
-  public allTrainerRequests: TrainerRequest[];
   @Input() currentUser;
 
   constructor(private testService: TestService) {
@@ -39,92 +34,67 @@ export class ProfileComponent {
   }
 
   isTrainer(): boolean {
-    return this.getUser().authority === 'ROLE_TRAINER';
+    return this.testService.isTrainer();
   }
 
   isAdmin(): boolean {
-    return this.getUser().authority === 'ROLE_ADMIN';
+    return this.testService.isAdmin();
   }
 
   isLearner(): boolean {
-    return this.getUser().authority === 'ROLE_USER';
+    return this.testService.isLearner();
   }
 
   isSecurity(): boolean {
-    return this.getUser().authority === 'ROLE_SECURITY';
+    return this.testService.isSecurity();
   }
 
   getTrainerRequestsForTrainer(): TrainerRequest[] {
-    return this.trainerRequestsForTrainer;
+    return this.testService.trainerRequestsForTrainer;
   }
 
   getTrainerRequestsForLearner(): TrainerRequest[] {
-    return this.trainerRequestsForLearner;
+    return this.testService.trainerRequestsForLearner;
   }
 
   getRoomRequestsForTrainer(): RoomRequest[] {
-    return this.roomRequestForTrainer;
+    return this.testService.roomRequestForTrainer;
   }
 
   getAllRoomRequests(): RoomRequest[] {
-    return this.allRoomRequests;
+    return this.testService.allRoomRequests;
   }
 
   getAllTrainerRequests(): TrainerRequest[] {
-    return this.allTrainerRequests;
+    return this.testService.allTrainerRequests;
   }
 
   refresh(): void {
-    this.currentUser = this.getUser();
-    if (this.isTrainer()) {
-      this.testService.getTrainingRequestsForTrainer(this.currentUser.id)
-        .subscribe(value => this.trainerRequestsForTrainer = value);
-      this.testService.getRoomRequestsForTrainer(this.currentUser.id)
-        .subscribe(value => this.roomRequestForTrainer = value);
-    } else if (this.isLearner()) {
-      this.testService.getTrainingRequestsForLearner(this.getUser().id)
-        .subscribe(value => this.trainerRequestsForLearner = value);
-    } else if (this.isAdmin()) {
-      this.testService.getAllRoomRequests()
-        .subscribe(value => this.allRoomRequests = value);
-      this.testService.getAllTrainerRequests()
-        .subscribe(value => this.allTrainerRequests = value);
-    } else if (this.isSecurity()) {
-      this.testService.getAllRoomRequests()
-        .subscribe(value => this.allRoomRequests = value);
-      this.testService.getAllTrainerRequests()
-        .subscribe(value => this.allTrainerRequests = value);
-    }
+    this.testService.refresh();
   }
 
   sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
-    this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId);
   }
 
   sendRoomRequestApprovalBySecurity(roomRequestId): void {
-    this.testService.sendRoomRequestApprovalBySecurity(roomRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.sendRoomRequestApprovalBySecurity(roomRequestId);
   }
 
   sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
-    this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId);
   }
 
   sendRoomRequestApprovalByAdmin(roomRequestId): void {
-    this.testService.sendRoomRequestApprovalByAdmin(roomRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.sendRoomRequestApprovalByAdmin(roomRequestId);
   }
 
   deleteRoomRequest(roomRequestId): void {
-    this.testService.deleteRoomRequest(roomRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.deleteRoomRequest(roomRequestId);
   }
 
   deleteTrainerRequest(trainerRequestId): void {
-    this.testService.deleteTrainerRequest(trainerRequestId)
-      .subscribe(value => this.refresh());
+    this.testService.deleteTrainerRequest(trainerRequestId);
   }
 
   getDate(milliseconds): Date {
