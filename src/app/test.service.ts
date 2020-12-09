@@ -88,33 +88,27 @@ export class TestService {
     this.httpClient.post<any>(this.url + '/v1/api/request/train/', trainerRequest).subscribe(value => console.log(value));
   }
 
-  sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
-    this.httpClient.get<any>(this.url + '/v1/api/request/train/security/approve/' + trainerRequestId)
-      .subscribe(value => console.log(value));
+  sendTrainerRequestApprovalBySecurity(trainerRequestId): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/train/security/approve/' + trainerRequestId);
   }
 
-  sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
-    this.httpClient.get<any>(this.url + '/v1/api/request/train/trainer/approve/' + trainerRequestId)
-      .subscribe(value => console.log(value));
+  sendTrainerRequestApprovalByTrainer(trainerRequestId): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/train/trainer/approve/' + trainerRequestId);
   }
 
-  sendRoomRequestApprovalBySecurity(roomRequestId): void {
-    this.httpClient.get<any>(this.url + '/v1/api/request/room/security/approve/' + roomRequestId)
-      .subscribe(value => console.log(value));
+  sendRoomRequestApprovalBySecurity(roomRequestId): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/room/security/approve/' + roomRequestId);
   }
 
-  sendRoomRequestApprovalByAdmin(roomRequestId): void {
-    this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId)
-      .subscribe(value => console.log(value));
+  sendRoomRequestApprovalByAdmin(roomRequestId): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/v1/api/request/room/admin/approve/' + roomRequestId);
   }
 
-  deleteRoomRequest(roomRequestId): void {
-    this.httpClient.delete<any>(this.url + '/v1/api/request/room/' + roomRequestId)
-      .subscribe(value => console.log(value));
+  deleteRoomRequest(roomRequestId): Observable<any> {
+    return this.httpClient.delete<any>(this.url + '/v1/api/request/room/' + roomRequestId);
   }
 
-  deleteTrainerRequest(trainerRequestId): void {
-    this.httpClient.delete<any>(this.url + '/v1/api/request/trainer/' + trainerRequestId)
-      .subscribe(value => console.log(value));
+  deleteTrainerRequest(trainerRequestId): Observable<any> {
+    return this.httpClient.delete<any>(this.url + '/v1/api/request/train/' + trainerRequestId);
   }
 }

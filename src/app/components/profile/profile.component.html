@@ -7,6 +7,10 @@
 <!--  PROFILE INFO-->
   <table>
     <tr>
+      <td>Username</td>
+      <td>{{getUser().username}}</td>
+    </tr>
+    <tr>
       <td>First Name</td>
       <td>{{getUser().firstName}}</td>
     </tr>
@@ -96,6 +100,7 @@
         <td>{{getDate(trainerRequest.endTime).toString()}}</td>
         <td>{{trainerRequest.approvedTrainer}}</td>
         <td>{{trainerRequest.approvedSecurity}}</td>
+        <td><button (click)="deleteTrainerRequest(trainerRequest.id)">delete</button></td>
       </tr>
     </table>
   </div>

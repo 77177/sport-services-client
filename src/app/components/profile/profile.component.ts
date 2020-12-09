@@ -98,27 +98,33 @@ export class ProfileComponent {
   }
 
   sendTrainerRequestApprovalBySecurity(trainerRequestId): void {
-    this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId);
+    this.testService.sendTrainerRequestApprovalBySecurity(trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 
   sendRoomRequestApprovalBySecurity(roomRequestId): void {
-    this.testService.sendRoomRequestApprovalBySecurity(roomRequestId);
+    this.testService.sendRoomRequestApprovalBySecurity(roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
   sendTrainerRequestApprovalByTrainer(trainerRequestId): void {
-    this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId);
+    this.testService.sendTrainerRequestApprovalByTrainer(trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 
   sendRoomRequestApprovalByAdmin(roomRequestId): void {
-    this.testService.sendRoomRequestApprovalByAdmin(roomRequestId);
+    this.testService.sendRoomRequestApprovalByAdmin(roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
   deleteRoomRequest(roomRequestId): void {
-    this.testService.deleteRoomRequest(roomRequestId);
+    this.testService.deleteRoomRequest(roomRequestId)
+      .subscribe(value => this.refresh());
   }
 
   deleteTrainerRequest(trainerRequestId): void {
-    this.testService.deleteTrainerRequest(trainerRequestId);
+    this.testService.deleteTrainerRequest(trainerRequestId)
+      .subscribe(value => this.refresh());
   }
 
   getDate(milliseconds): Date {
