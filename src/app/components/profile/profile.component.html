@@ -154,6 +154,19 @@
         <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
       </tr>
     </table>
+    <form name='f' (submit)="createRoom()">
+      <table>
+        <tr>
+          <td>Room area:</td>
+          <td><label>
+            <input type='text' name='username' value='' [(ngModel)]="newRoom.area"/>
+          </label></td>
+        </tr>
+        <tr>
+          <td><input name="submit" type="submit" value="Submit" /></td>
+        </tr>
+      </table>
+    </form>
   </div>
 
 <!--  SECURITY BLOCK-->

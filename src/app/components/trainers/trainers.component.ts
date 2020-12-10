@@ -23,7 +23,10 @@ export class TrainersComponent implements OnInit {
 
   ngOnInit(): void {
     this.testService.getTrainers()
-      .subscribe(value => this.trainers = value);
+      .subscribe(value => {
+        this.trainers = value;
+        this.testService.refresh();
+      });
   }
 
   getUser(): any {

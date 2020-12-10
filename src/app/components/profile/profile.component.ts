@@ -12,6 +12,9 @@ export class ProfileComponent {
   public testObject: string;
   public sign = 'PROFILE';
   public creds = {username: '', password: ''};
+  public newRoom = {
+    area: -1
+  };
   @Input() currentUser;
 
   constructor(private testService: TestService) {
@@ -99,6 +102,10 @@ export class ProfileComponent {
 
   getDate(milliseconds): Date {
     return new Date(milliseconds);
+  }
+
+  createRoom(): void {
+    this.testService.createRoom(this.newRoom);
   }
 }
 

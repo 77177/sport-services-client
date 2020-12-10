@@ -167,4 +167,9 @@ export class TestService {
     this.httpClient.delete<any>(this.url + '/v1/api/request/train/' + trainerRequestId)
       .subscribe(value => this.refresh());
   }
+
+  createRoom(newRoom): void {
+    this.httpClient.post<any>(this.url + '/v1/api/room/', newRoom)
+      .subscribe(value => this.refresh());
+  }
 }

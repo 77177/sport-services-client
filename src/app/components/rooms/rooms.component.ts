@@ -23,7 +23,10 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.testService.getRooms()
-      .subscribe(value => this.rooms = value);
+      .subscribe(value => {
+        this.rooms = value;
+        this.testService.refresh();
+      });
   }
 
   getUser(): any {
@@ -31,7 +34,7 @@ export class RoomsComponent implements OnInit {
   }
 
   isTrainer(): boolean {
-    return this.getUser().authority === 'ROLE_TRAINER';
+    return this.testService.isTrainer();
   }
 
   createRoomRequest(roomId: number, trainerId: any): void {
@@ -41,5 +44,4 @@ export class RoomsComponent implements OnInit {
     console.log(this.roomRequest);
     this.testService.createRoomRequest(this.roomRequest);
   }
-
 }
