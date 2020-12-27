@@ -27,4 +27,8 @@ export class RegisterComponent implements OnInit {
   register(): void {
     this.testService.register(this.userToRegister);
   }
+
+  isAdmin(): boolean {
+    return this.testService.isAdmin();
+  }
 }

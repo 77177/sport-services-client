@@ -154,6 +154,8 @@
         <td><button (click)="deleteRoomRequest(roomRequest.id)">delete</button></td>
       </tr>
     </table>
+
+    ADD ROOM
     <form name='f' (submit)="createRoom()">
       <table>
         <tr>
@@ -167,7 +169,12 @@
         </tr>
       </table>
     </form>
+
+    ADD USER
+    <app-register></app-register>
   </div>
+
+
 
 <!--  SECURITY BLOCK-->
   <div *ngIf="isSecurity()">
