@@ -1,6 +1,6 @@
 {
   "/": {
-    "target": "http://lb:8080",
+    "target": "http://app:8080",
     "secure": false
   }
 }
