@@ -104,7 +104,7 @@ export class TestService {
 
   login(username: string, password: string): void {
     const creds = {username, password};
-    this.httpClient.post<any>(this.url + '/login?username=' + username + '&password=' + password, creds)
+    this.httpClient.post<any>(this.url + '/login', creds)
       .subscribe(value => {
         this.user = value;
         this.refresh();
